@@ -65,8 +65,9 @@ function showCurrentLocation(event) {
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
 
-let currentLocationButton = document.querySelector("#current-location");
-currentLocationButton.addEventListener("click", showCurrentLocation);
+//let currentLocationButton = document.querySelector("#current-location");
+//currentLocationButton.addEventListener("click", showCurrentLocation);
+//It is not happy with this addEventListener and I am not sure why... sos
 
 let searchForm = document.querySelector("#search-location");
 searchForm.addEventListener("submit", findWeather);
