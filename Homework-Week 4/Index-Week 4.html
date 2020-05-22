@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather 🌦</title>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="src/style.css" />
     <link
       rel="stylesheet"
@@ -16,10 +15,7 @@
       href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap"
       rel="stylesheet"
     />
-    <script
-      src="https://kit.fontawesome.com/b3d11e9eef.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
 
   <body>
@@ -35,23 +31,26 @@
                 autocomplete="off"
                 autofocus="on"
               />
+              <input type="submit" value="search" class="search-button" />
               <br />
-              <button class="current-location">Current location</button>
+              <button class="current-location" id="current=location">
+                Current location📍
+              </button>
               <button class="fahrenheit">°F</button>
               <button class="celsius">°C</button>
             </form>
           </div>
           <div class="col-sm">
-            <h1>Todays Weather</h1>
-            <i class="fas fa-cloud-sun"></i>
+            <h1 id="city"></h1>
+            <h2 id="temperature"></h2>
+            <span>°C</span>
           </div>
           <div class="date-time-details">
             <p id="date-time"><strong>May 4th, 2020 12:00pm</strong></p>
             <ul id="weather-details">
-              <li>Wind S 3km/hr</li>
-              <li>Humidity 65%</li>
-              <li>Precipitation 0.1cm</li>
-              <li>Feels like 11°C</li>
+              <li>Wind <span id="wind-speed"></span>km/hr</li>
+              <li>Humidity <span id="humidity"></span>%</li>
+              <li>Precipitation 0 cm</li>
             </ul>
           </div>
         </div>
@@ -93,55 +92,6 @@
       </div>
     </section>
     <footer>Coded by Robyn Abe</footer>
-    <script>
-      let now = new Date();
-      let div = document.querySelector("#date-time");
-
-      let days = [
-        "Sunday",
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-      ];
-      let day = days[now.getDay()];
-      let months = [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December",
-      ];
-      let month = months[now.getMonth()];
-      let date = now.getDate();
-      let hour = now.getHours();
-      let minute = now.getMinutes();
-      let year = now.getFullYear();
-
-      div.innerHTML = `${day}, ${month} ${date} ${hour}:${minute} ${year}`;
-
-      function showWeather(response) {
-        document.querySelector("h1").innerHTML = response.data.name;
-      }
-
-      function search(event) {
-        event.preventDefault();
-        let apiKey = "47aecf87524427e10968c44895784738";
-        let city = document.querySelector("#search-text-input").value;
-        let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
-        axios.get(url).then(showWeather);
-      }
-      let form = document.querySelector("#search-location");
-      form.addEventListener("enter", search);
-    </script>
+    <script src="src/index.js"></script>
   </body>
 </html>

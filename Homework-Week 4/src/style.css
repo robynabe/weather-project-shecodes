@@ -27,7 +27,8 @@ input {
   border-color: #9fd3d2;
   border-radius: 6px;
 }
-.current-location {
+.current-location,
+.search-button {
   display: inline;
   margin: auto;
   padding: 5px;
@@ -38,7 +39,6 @@ input {
   border-width: 3px;
   border-radius: 6px;
 }
-
 .fahrenheit,
 .celsius {
   margin: 10px 5px 5px 2px;
@@ -58,9 +58,18 @@ button:hover {
   transition: all 200ms ease-in-out;
   cursor: pointer;
 }
+.search-button:hover {
+  background-color: #9fd3d2;
+  color: #ffffff;
+  transition: all 200ms ease-in-out;
+  cursor: pointer;
+}
 h1 {
   display: auto;
   padding: 2px;
+}
+h2 {
+  display: inline;
 }
 .date-time-details {
   margin-top: 5px;
